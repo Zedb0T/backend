@@ -21,8 +21,9 @@
   "private": true,
   "scripts": {
     "setup-db": "node ./db/run-migrations.mjs",
+    "setup-db-remote": "node ./db/run-migrations.mjs --remote",
     "start": "wrangler dev --local",
-    "deploy": "wrangler publish",
+    "deploy": "wrangler deploy",
     "test": "vitest",
     "format": "npx prettier --write ./src ./test",
     "discord-register": "node ./discord-commands.mjs"

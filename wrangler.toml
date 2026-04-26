@@ -2,10 +2,8 @@ name = "api"
 main = "./src/index.ts"
 compatibility_date = "2023-02-01"
 node_compat = true
-account_id = "545a2714ad9f345f3724307294975cdc"
+account_id = "ca7ebe24ef9d607c47250ff8416651a1"
 [[ d1_databases ]]
 binding = "DB"
-database_name = "jakspeedruns-db"
-database_id = "30c599a9-94c6-450a-8783-47153c6bc277"
-preview_database_name = "jakspeedruns-db-preview"
-preview_database_id = "86455a6c-b816-4780-bf0a-da975d80c501"
+database_name = "jakspeedruns-fork-db"
+database_id = "b03ebff1-cb9b-41de-b784-117a396969e4"

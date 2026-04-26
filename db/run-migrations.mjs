@@ -10,6 +10,8 @@ import fs from "fs";
 
 export const execute = utils.promisify(exec);
 
+const target = process.argv.includes("--remote") ? "--remote" : "--local";
+
 const run = async () => {
 	let files = fs.readdirSync("./db/migrations").sort();
 	for (const file of files) {
@@ -17,9 +19,9 @@ const run = async () => {
 			console.log("Skipping temp migration");
 			continue;
 		} else {
-			console.log("Running migration", file);
+			console.log("Running migration", file, target);
 		}
-		await execute(`wrangler d1 execute jakspeedruns-db --yes --local --file=./db/migrations/${file}`);
+		await execute(`wrangler d1 execute jakspeedruns-fork-db --yes ${target} --file=./db/migrations/${file}`);
 	}
 };
 
