@@ -5,7 +5,15 @@ export const ListHighscores = async (request: any, env: Env, ctx: ExecutionConte
   // TODO - handle no highscore ID
   const highscoreId = request.params.highscoreId;
 
-  const highscores = await getHighscores(env.DB, highscoreId);
+  let pausedFilter: boolean | undefined = undefined;
+  const pausedQuery = request.query?.paused;
+  if (pausedQuery === "true") {
+    pausedFilter = true;
+  } else if (pausedQuery === "false") {
+    pausedFilter = false;
+  }
+
+  const highscores = await getHighscores(env.DB, highscoreId, pausedFilter);
   // TODO - finer grained CORS up above (middleware or something)
   const headers = {
     "Cache-Control": "max-age=6000",
